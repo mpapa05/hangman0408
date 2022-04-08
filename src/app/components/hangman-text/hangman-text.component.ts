@@ -27,7 +27,7 @@ export class HangmanTextComponent implements OnInit, OnChanges {
   public fillWithEmpty() {
     let starterText: string[] = [];
     this.question.split('').forEach((element, index) => {
-      starterText[index] = '□';
+      starterText[index] = '_';
     });
     this.guessedText = starterText;
   }
@@ -38,7 +38,7 @@ export class HangmanTextComponent implements OnInit, OnChanges {
       if (this.guesses.includes(element)) {
         updatedText[index] = element;
       } else {
-        updatedText[index] = '□';
+        updatedText[index] = '_';
       }
     });
     this.guessedText = updatedText;

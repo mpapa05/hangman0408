@@ -1,11 +1,7 @@
 <div class="letters">
-
-
-<div class="letters-container">
-    <ng-container *ngFor="let letter of guessedText"
-      ><p *ngIf="letter != ' '">{{ letter }}</p>
-      <p *ngIf="letter == ' '">-</p>
-    </ng-container>
-</div>
-
+    <div class="letters-container">
+        <ng-container *ngFor="let letter of guessedText"
+        ><p class="letter">{{ letter }}</p>
+        </ng-container>
+    </div>
 </div>

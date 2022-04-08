@@ -2,5 +2,10 @@
     text-align: center;
     .letters-container {
         display: inline-flex;
+        .letter {
+            border-style: solid;
+            padding: 8px;
+            margin: 2px;
+        }
     }
 }

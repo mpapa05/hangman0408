@@ -1,4 +1,5 @@
-<svg
+<div class="svg-mistakes-container">
+  <svg
   version="1.1"
   id="hangman"
   xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +12,8 @@
   enable-background="new 0 0 250 350"
   xml:space="preserve"
 >
-  <line
+  <line 
+  *ngIf="mistakesRemaining <= 6"
     id="base1"
     fill="none"
     stroke="#000000"
@@ -23,6 +25,7 @@
     y2="326.034"
   />
   <line
+  *ngIf="mistakesRemaining <= 6"
     id="base2"
     fill="none"
     stroke="#000000"
@@ -34,6 +37,7 @@
     y2="324"
   />
   <line
+  *ngIf="mistakesRemaining <= 6"
     id="base3"
     fill="none"
     stroke="#000000"
@@ -45,6 +49,7 @@
     y2="34.173"
   />
   <line
+  *ngIf="mistakesRemaining <= 6"
     id="base4"
     fill="none"
     stroke="#000000"
@@ -334,4 +339,9 @@
   </g>
   <!--end happy group-->
 </svg>
+<div>
+  <p *ngIf="success">You Win!</p>
+  <p *ngIf="!success">Game Over!</p>
+</div>
 <div class="mistakes-count">Mistakes Remaining: {{ mistakesRemaining }}</div>
+</div>

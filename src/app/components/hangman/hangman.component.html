@@ -1,38 +1,31 @@
 <div class="hangman">
   <ng-container *ngIf="!start">
-  <label for="questionLengths">Choose word length:</label>
-
-  <select  [(ngModel)]="questionLength" (change)="getQuestionWithLength(this);">
+    <label for="questionLengths">Set word length:</label>
+    <select  [(ngModel)]="questionLength" (change)="getQuestionWithLength(this);">
       <option *ngFor="let length of questionLengths" 
       [value]="length" 
-  >
-    {{length}}
-  </option>
-  </select>
-</ng-container>
-
-  <ng-container *ngIf="start">
-
-  
-  <app-hangman-svg
-    [guesses]="guesses"
-    [question]="question"
-    (gameFinished)="onGameFinished()"
-  ></app-hangman-svg>
-  <app-hangman-text
-    [question]="question"
-    [guesses]="guesses"
-  ></app-hangman-text>
-  <ng-container *ngIf="finished">
-    <p>{{ question.toUpperCase() }}</p>
-    <button (click)="restart()">restart</button>
+      >{{length}}</option>
+    </select>
   </ng-container>
-  <app-hangman-keyboard
-    *ngIf="!finished"
-    (keyPressed)="guess($event)"
-    [question]="question"
-  ></app-hangman-keyboard>
-
-</ng-container>
+  <ng-container *ngIf="start">
+    <app-hangman-svg
+      [guesses]="guesses"
+      [question]="question"
+      (gameFinished)="onGameFinished()">
+    </app-hangman-svg>
+    <app-hangman-text
+      [question]="question"
+      [guesses]="guesses">
+    </app-hangman-text>
+    <ng-container *ngIf="finished">
+      <p>{{ question.toUpperCase() }}</p>
+      <button (click)="restart()">restart</button>
+    </ng-container>
+    <app-hangman-keyboard
+      *ngIf="!finished"
+      (keyPressed)="guess($event)"
+      [question]="question">
+    </app-hangman-keyboard>
+  </ng-container>
 </div>
 
