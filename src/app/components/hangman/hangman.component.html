@@ -1,4 +1,13 @@
-<p>hangman works!</p>
+<label for="questionLengths">Choose word length:</label>
+
+<select  [(ngModel)]="questionLength" (change)="getQuestionWithLength(this);">
+    <option *ngFor="let length of questionLengths" 
+    [value]="length" 
+>
+  {{length}}
+</option>
+</select>
+
 <app-hangman-svg></app-hangman-svg>
 <app-hangman-text></app-hangman-text>
 <app-hangman-keyboard></app-hangman-keyboard>
