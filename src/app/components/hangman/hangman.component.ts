@@ -12,6 +12,10 @@ export class HangmanComponent implements OnInit {
   public questions: string[] = [];
   public questionLength: number = 0;
   public questionLengths: number[] = [];
+  public question!: string;
+  public finished = false;
+  public guesses: string[] = [];
+  public start = false;
 
   constructor(private HangmanService: HangmanService) { }
 
@@ -35,5 +39,39 @@ export class HangmanComponent implements OnInit {
   public getQuestionWithLength(event: any){
     console.log(event.questionLength);
     this.questionLength = event.questionLength;
+    this.question = this.getQuestionsByLength(this.questionLength);
+    this.start = true;
+    console.log(this.question);
+  }
+
+  public getQuestionsByLength(length: number): string{
+    const questionsByLength: string[] = [];
+    this.questions.forEach(question => {
+      if(question.length == length){
+        questionsByLength.push(question);
+      }
+    });
+    const questionIndex = Math.floor(Math.random() * questionsByLength.length);
+    const question = questionsByLength[questionIndex];
+    console.log(questionsByLength);
+    return question;
+  }
+
+  guess(letter: string) {
+    console.log(letter);
+    this.guesses = [...this.guesses, letter];
+  }
+
+  restart(): void {
+    this.guesses = [];
+    this.questionLength = 0;
+    this.question = '';
+    // this.getNewQuestion();
+    this.finished = false;
+    this.start = false;
+  }
+
+  public onGameFinished(): void {
+    this.finished = true;
   }
 }
